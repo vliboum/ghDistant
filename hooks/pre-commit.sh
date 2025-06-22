@@ -1,0 +1,47 @@
+#!/bin/bash
+# Ce script est un hook Git 'pre-commit'.
+# Il demande à l'utilisateur s'il souhaite "vérifier le commit".
+# Si oui, il enregistre la date et l'heure actuelles dans 'suivi/commitInfo.txt'
+# et ajoute ce fichier au commit.
+
+# Chemin relatif au répertoire du dépôt où le fichier d'info sera stocké
+INFO_DIR="suivi"
+INFO_FILE="$INFO_DIR/commitInfo.txt"
+
+# Lire l'entrée de l'utilisateur.
+# L'option < /dev/tty est cruciale pour que 'read' fonctionne correctement
+# dans un hook pre-commit, car l'entrée standard est souvent redirigée.
+read -p "Vérifier le commit et stocker l'info (y/[n]) ? " yn < /dev/tty
+
+# Assigne 'n' si l'utilisateur ne tape rien (valeur par défaut)
+yn=${yn:-n}
+
+case $yn in
+    [Yy]* )
+        # Créer le répertoire si il n'existe pas
+        mkdir -p "$INFO_DIR"
+
+        # Obtenir la date et l'heure actuelles
+        # 'date' sur Linux/macOS, pour Windows Git Bash cela fonctionne aussi
+        CURRENT_DATETIME=$(date +"%Y-%m-%d %H:%M:%S")
+
+        # Écrire le texte dans le fichier
+        echo "commit vérifié le $CURRENT_DATETIME" > "$INFO_FILE"
+
+        # Ajouter le fichier d'info à la zone de staging pour qu'il soit inclus dans le commit
+        git add "$INFO_FILE"
+
+        echo "Fichier de suivi '$INFO_FILE' créé et ajouté au commit."
+        exit 0 # Le hook réussit, le commit continue
+        ;;
+    [Nn]* )
+        echo "Vérification du commit ignorée."
+        exit 0 # Le hook réussit, le commit continue
+        ;;
+    * ) # Gérer les entrées inattendues
+        echo "Réponse invalide. La vérification du commit est ignorée."
+        exit 0 # Le hook réussit, le commit continue
+        ;;
+esac
+# Cette ligne finale est une sécurité, le hook doit toujours exit 0 pour ne pas bloquer le commit
+exit 0

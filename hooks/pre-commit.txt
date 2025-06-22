@@ -1,0 +1,137 @@
+drwxr-xr-x  2 victorlib  staff    64 17 jui 21:03 répertoire
+drwxr-xr-x  2 victorlib  staff    64 17 jui 17:06 suivi
+drwxr-xr-x  2 victorlib  staff    64 17 jui 21:03 ton
+drwxr-xr-x  2 victorlib  staff    64 17 jui 21:03 un
+victorlib@air-de-victor git_exercice % ls -l hooks/
+total 0
+victorlib@air-de-victor git_exercice % ls -l .git/hooks/
+total 88
+-rwxr-xr-x  1 victorlib  staff   478 17 jui 16:11 applypatch-msg.sample
+-rwxr-xr-x  1 victorlib  staff   896 17 jui 16:11 commit-msg.sample
+-rwxr-xr-x  1 victorlib  staff   189 17 jui 16:11 post-update.sample
+-rwxr-xr-x  1 victorlib  staff   424 17 jui 16:11 pre-applypatch.sample
+-rwxr-xr-x  1 victorlib  staff  1642 17 jui 16:11 pre-commit.sample
+-rwxr-xr-x  1 victorlib  staff  1348 17 jui 16:11 pre-push.sample
+-rwxr-xr-x  1 victorlib  staff  4898 17 jui 16:11 pre-rebase.sample
+-rwxr-xr-x  1 victorlib  staff   544 17 jui 16:11 pre-receive.sample
+-rwxr-xr-x  1 victorlib  staff  1492 17 jui 16:11 prepare-commit-msg.sample
+-rwxr-xr-x  1 victorlib  staff  3610 17 jui 16:11 update.sample
+victorlib@air-de-victor git_exercice % mkdir hooks
+mv .git/hooks/pre-commit hooks/pre-commit
+cp hooks/pre-commit .git/hooks/pre-commit # Pour le remettre dans .git/hooks/
+chmod +x .git/hooks/pre-commit
+mkdir: hooks: File exists
+mv: rename .git/hooks/pre-commit to hooks/pre-commit: No such file or directory
+cp: hooks/pre-commit: No such file or directory
+cp: .git/hooks/pre-commit: No such file or directory
+cp: # is a directory (not copied).
+cp: Pour: No such file or directory
+cp: le: No such file or directory
+cp: remettre: No such file or directory
+cp: dans: No such file or directory
+chmod: .git/hooks/pre-commit: No such file or directory
+victorlib@air-de-victor git_exercice % mkdir hooks
+mv .git/hooks/pre-commit hooks/pre-commit
+cp hooks/pre-commit .git/hooks/pre-commit                                    
+mkdir: hooks: File exists
+mv: rename .git/hooks/pre-commit to hooks/pre-commit: No such file or directory
+cp: hooks/pre-commit: No such file or directory
+victorlib@air-de-victor git_exercice % clear      
+
+
+victorlib@air-de-victor git_exercice % ls -l
+total 8
+drwxr-xr-x  2 victorlib  staff    64 17 jui 21:03 #
+drwxr-xr-x  2 victorlib  staff    64 17 jui 21:03 à
+drwxr-xr-x  2 victorlib  staff    64 17 jui 21:03 Crée
+drwxr-xr-x  2 victorlib  staff    64 17 jui 21:03 de
+drwxr-xr-x  4 victorlib  staff   128 17 jui 17:08 git
+drwxr-xr-x  2 victorlib  staff    64 17 jui 21:03 hooks
+-rw-r--r--@ 1 victorlib  staff  1513 17 jui 16:50 index.html
+drwxr-xr-x  2 victorlib  staff    64 17 jui 21:03 la
+drwxr-xr-x  2 victorlib  staff    64 17 jui 21:03 projet
+drwxr-xr-x  2 victorlib  staff    64 17 jui 21:03 racine
+drwxr-xr-x  2 victorlib  staff    64 17 jui 21:03 répertoire
+drwxr-xr-x  2 victorlib  staff    64 17 jui 17:06 suivi
+drwxr-xr-x  2 victorlib  staff    64 17 jui 21:03 ton
+drwxr-xr-x  2 victorlib  staff    64 17 jui 21:03 un
+victorlib@air-de-victor git_exercice % cd hooks
+victorlib@air-de-victor hooks % ls -l
+total 0
+victorlib@air-de-victor hooks % create pre-commit
+zsh: command not found: create
+victorlib@air-de-victor hooks % ls -a
+.	..
+victorlib@air-de-victor hooks % ls -l            
+total 0
+victorlib@air-de-victor hooks % ls -l hooks/
+ls: hooks/: No such file or directory
+victorlib@air-de-victor hooks % cp hooks/pre-commit .git/hooks/pre-commit
+cp: hooks/pre-commit: No such file or directory
+victorlib@air-de-victor hooks % ls
+victorlib@air-de-victor hooks % cd ..
+victorlib@air-de-victor git_exercice % ls -l
+total 8
+drwxr-xr-x  4 victorlib  staff   128 17 jui 17:08 git
+drwxr-xr-x  3 victorlib  staff    96 17 jui 21:12 hooks
+-rw-r--r--@ 1 victorlib  staff  1513 17 jui 16:50 index.html
+victorlib@air-de-victor git_exercice % chmod +x .git/hooks/pre-commit
+chmod: .git/hooks/pre-commit: No such file or directory
+victorlib@air-de-victor git_exercice % cd hooks                      
+victorlib@air-de-victor hooks % chmod +x .git/hooks/pre-commit
+chmod: .git/hooks/pre-commit: No such file or directory
+victorlib@air-de-victor hooks % # Retourne à la racine du dépôt si tu es dans 'hooks'
+cd ..
+
+# Supprime tous ces dossiers étranges qui n'ont rien à faire là
+rmdir "#" "à" "Crée" "de" "la" "projet" "racine" "répertoire" "ton" "un"
+
+# Assure-toi que ton dossier 'hooks' (vide) et 'suivi' (peut-être vide) sont toujours là.
+# S'il y a un fichier 'pre-commit' dans .git/hooks/ supprime-le pour repartir à zéro.
+rm -f .git/hooks/pre-commit
+zsh: command not found: #
+zsh: command not found: #
+victorlib@air-de-victor git_exercice % mkdir -p suivi
+victorlib@air-de-victor git_exercice % nano hooks/pre-commit
+
+  UW PICO 5.09                 File: hooks/pre-commit                 Modified  
+
+case $yn in
+    [Yy]* )
+        # Créer le répertoire si il n'existe pas
+        mkdir -p "$INFO_DIR"
+
+        # Obtenir la date et l'heure actuelles
+        CURRENT_DATETIME=$(date +"%Y-%m-%d %H:%M:%S")
+
+        # Écrire le texte dans le fichier
+        echo "commit vérifié le $CURRENT_DATETIME" > "$INFO_FILE"
+
+        # Ajouter le fichier d'info à la zone de staging pour qu'il soit inclus$
+        git add "$INFO_FILE"
+
+        echo "Fichier de suivi '$INFO_FILE' créé et ajouté au commit."
+        exit 0
+        ;; 
+    [Nn]* )
+        echo "Vérification du commit ignorée."
+        exit 0
+        ;;
+    * ) 
+        echo "Réponse invalide. La vérification du commit est ignorée."
+        exit 0
+        ;;
+esac
+exit    
+        
+
+        
+        
+
+        
+        
+          
+    
+
+^G Get Help  ^O WriteOut  ^R Read File ^Y Prev Pg   ^K Cut Text  ^C Cur Pos   
+^X Exit      ^J Justify   ^W Where is  ^V Next Pg   ^U UnCut Text^T To Spell  
